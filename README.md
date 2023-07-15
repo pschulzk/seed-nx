@@ -7,7 +7,7 @@ A monorepository template based on [Nrwl/Nx](https://nx.dev/) configured with [A
 
 * [NodeJS](https://nodejs.org/en/blog/release/v18.12.0) >= 18.12.0 < 19
 * [Docker Compose](https://github.com/docker/compose)
-* [npx](https://www.npmjs.com/package/npx) for convenience
+* [npx](https://www.npmjs.com/package/npx) (optional)
 
 
 ## How to run
@@ -24,12 +24,12 @@ docker-compose up -d
 
 Run backend app:
 ```
-npm run serve-be
+npm run serve-api
 ```
 
 In another CLI instance, run frontend app:
 ```
-npm run serve-fe
+npm run serve-ui
 ```
 
 See sample UI at http://localhost:4200/
