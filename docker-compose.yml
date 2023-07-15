@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  psk-database:
+    image: postgres:latest
+    hostname: psk-database
+    container_name: psk-database
+    restart: always
+    environment:
+      POSTGRES_USER: psk_user
+      POSTGRES_PASSWORD: mYsEcReTpAsSwOrD
+      POSTGRES_DB: psk
+    ports:
+      - "5432:5432"

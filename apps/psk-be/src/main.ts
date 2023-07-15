@@ -26,15 +26,13 @@ async function bootstrap() {
   app.setGlobalPrefix(globalPrefix)
 
   const options = new DocumentBuilder()
-    .setTitle('NestJS Fastify Streaming Server')
-    .setDescription('Video Stream Meta Data Visualization')
+    .setTitle('PSK Seed Nx')
+    .setDescription('API documentation ')
     .setVersion(version)
-    .addTag('File')
+    // .addTag('entity')
     .build()
   const document = SwaggerModule.createDocument(app, options)
   SwaggerModule.setup('api/docs', app, document)
-
-  app.useStaticAssets({ root: `${__dirname}/assets`, prefix: '/video/', serve: true, preCompressed: true, acceptRanges: true, cacheControl: true })
 
   const port = process.env.PORT || 3000
   await app.listen(port)
