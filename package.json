@@ -9,8 +9,8 @@
   "scripts": {
     "ng": "nx",
     "nx": "nx",
-    "serve-be": "npx dotenv -e apps/psk-be/.env -- npx prisma migrate reset --schema apps/psk-be/prisma/schema.prisma && nx serve --configuration development --project psk-be",
-    "serve-fe": "nx serve --configuration development --proxy-config proxy.config.json --project psk-fe",
+    "serve-api": "npx dotenv -e apps/psk-api/.env -- npx prisma migrate reset --schema apps/psk-api/prisma/schema.prisma && nx serve --configuration development --project psk-api",
+    "serve-ui": "nx serve --configuration development --proxy-config proxy.config.json --project psk-ui",
     "build": "nx build --prod --project",
     "test": "nx test --watch=false --project",
     "test:watch": "nx test --watch=true --project"

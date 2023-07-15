@@ -51,7 +51,7 @@ npx nx g @nx/node:application
 
 #### Define schema
 
-In `apps/psk-be/prisma/schema.prisma`, e. g.
+In `apps/psk-api/prisma/schema.prisma`, e. g.
 ```
 model MyEntity {
   id       String  @id @default(uuid())

@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'psk-be-e2e',
+  displayName: 'psk-api-e2e',
   preset: '../../jest.preset.js',
   globalSetup: '<rootDir>/src/support/global-setup.ts',
   globalTeardown: '<rootDir>/src/support/global-teardown.ts',
@@ -14,6 +14,5 @@ export default {
       },
     ],
   },
-  moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/psk-be-e2e',
+  moduleFileExtensions: ['ts', 'js', 'html']
 };

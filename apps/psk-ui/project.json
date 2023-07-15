@@ -1,9 +1,9 @@
 {
-  "name": "psk-fe",
+  "name": "psk-ui",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "psk-fe",
-  "sourceRoot": "apps/psk-fe/src",
+  "prefix": "psk-ui",
+  "sourceRoot": "apps/psk-ui/src",
   "tags": [],
   "targets": {
     "build": {
@@ -12,19 +12,19 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/apps/psk-fe",
-        "index": "apps/psk-fe/src/index.html",
-        "main": "apps/psk-fe/src/main.ts",
+        "outputPath": "dist/apps/psk-ui",
+        "index": "apps/psk-ui/src/index.html",
+        "main": "apps/psk-ui/src/main.ts",
         "polyfills": [
           "zone.js"
         ],
-        "tsConfig": "apps/psk-fe/tsconfig.app.json",
+        "tsConfig": "apps/psk-ui/tsconfig.app.json",
         "assets": [
-          "apps/psk-fe/src/favicon.ico",
-          "apps/psk-fe/src/assets"
+          "apps/psk-ui/src/favicon.ico",
+          "apps/psk-ui/src/assets"
         ],
         "styles": [
-          "apps/psk-fe/src/styles.scss"
+          "apps/psk-ui/src/styles.scss"
         ],
         "scripts": []
       },
@@ -59,10 +59,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "psk-fe:build:production"
+          "browserTarget": "psk-ui:build:production"
         },
         "development": {
-          "browserTarget": "psk-fe:build:development"
+          "browserTarget": "psk-ui:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -70,7 +70,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "psk-fe:build"
+        "browserTarget": "psk-ui:build"
       }
     },
     "lint": {
@@ -80,8 +80,8 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "apps/psk-fe/**/*.ts",
-          "apps/psk-fe/**/*.html"
+          "apps/psk-ui/**/*.ts",
+          "apps/psk-ui/**/*.html"
         ]
       }
     },
@@ -91,7 +91,7 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "apps/psk-fe/jest.config.ts",
+        "jestConfig": "apps/psk-ui/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -104,7 +104,7 @@
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "psk-fe:build"
+        "buildTarget": "psk-ui:build"
       }
     }
   }

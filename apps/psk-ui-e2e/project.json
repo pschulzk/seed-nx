@@ -29,5 +29,5 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["psk-fe"]
+  "implicitDependencies": ["psk-ui"]
 }

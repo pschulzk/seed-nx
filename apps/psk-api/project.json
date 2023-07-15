@@ -1,7 +1,7 @@
 {
-  "name": "psk-be",
+  "name": "psk-api",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/psk-be/src",
+  "sourceRoot": "apps/psk-api/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -11,12 +11,12 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/psk-be",
-        "main": "apps/psk-be/src/main.ts",
-        "tsConfig": "apps/psk-be/tsconfig.app.json",
-        "assets": ["apps/psk-be/src/assets"],
+        "outputPath": "dist/apps/psk-api",
+        "main": "apps/psk-api/src/main.ts",
+        "tsConfig": "apps/psk-api/tsconfig.app.json",
+        "assets": ["apps/psk-api/src/assets"],
         "isolatedConfig": true,
-        "webpackConfig": "apps/psk-be/webpack.config.js"
+        "webpackConfig": "apps/psk-api/webpack.config.js"
       },
       "configurations": {
         "development": {},
@@ -27,14 +27,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "psk-be:build"
+        "buildTarget": "psk-api:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "psk-be:build:development"
+          "buildTarget": "psk-api:build:development"
         },
         "production": {
-          "buildTarget": "psk-be:build:production"
+          "buildTarget": "psk-api:build:production"
         }
       }
     },
@@ -42,14 +42,14 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/psk-be/**/*.ts"]
+        "lintFilePatterns": ["apps/psk-api/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/psk-be/jest.config.ts",
+        "jestConfig": "apps/psk-api/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
