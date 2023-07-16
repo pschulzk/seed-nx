@@ -1,7 +1,29 @@
 {
-  "name": "@psk/source",
+  "name": "@psk/seed-nx",
   "version": "0.0.0",
   "license": "MIT",
+  "keywords": [
+    "monorepo",
+    "template",
+    "seed",
+    "starter",
+    "angular",
+    "nestjs",
+    "prisma",
+    "postgresql"
+  ],
+  "description": "A monorepository template based on Nrwl/Nx set up for Angular with Angular Material, NestJS and Prisma using PostgreSQL.",
+  "author": "Philip Schulz-Klingauf",
+  "contributors": [
+    {
+      "name": "Philip Schulz-Klingauf",
+      "url": "https://www.linkedin.com/in/philip-schulz-klingauf-1a10ba126/",
+      "email": "psk@schulz-klingauf.de"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/pschulzk/seed-nx/issues"
+  },
   "engines": {
     "node": ">=18.12.0 <19",
     "npm": ">=8.19.2 <9"
@@ -9,8 +31,9 @@
   "scripts": {
     "ng": "nx",
     "nx": "nx",
+    "generate-api-lib": "npx ng-openapi-gen -c psk-api-openapi-gen.json && npx create-ts-index libs/psk-lib/src/lib",
     "serve-api": "npx dotenv -e apps/psk-api/.env -- npx prisma migrate reset --schema apps/psk-api/prisma/schema.prisma && nx serve --configuration development --project psk-api",
-    "serve-ui": "nx serve --configuration development --proxy-config proxy.config.json --project psk-ui",
+    "serve-ui": "npm run generate-api-lib && nx serve --configuration development --proxy-config proxy.config.json --project psk-ui",
     "build": "nx build --prod --project",
     "test": "nx test --watch=false --project",
     "test:watch": "nx test --watch=true --project"
@@ -78,6 +101,7 @@
     "@types/uuidv4": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
+    "create-ts-index": "^1.14.0",
     "cypress": "^12.11.0",
     "dotenv-cli": "^7.2.1",
     "esbuild": "^0.17.17",
@@ -89,6 +113,7 @@
     "jest-environment-node": "^29.4.1",
     "jest-preset-angular": "~13.1.0",
     "nestjs-prisma-crud-schematics": "^1.0.0-beta.12",
+    "ng-openapi-gen": "^0.25.1",
     "nx": "16.4.0",
     "nx-cloud": "latest",
     "prettier": "^2.6.2",

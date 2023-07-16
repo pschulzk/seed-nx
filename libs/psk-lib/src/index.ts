@@ -1,1 +1,1 @@
-export * from './lib/models/data.model'
+export * from './lib/'

@@ -14,5 +14,18 @@
 <div class="wrapper">
   <div class="container">
     <h1>PSK Seed Nx</h1>
+    <br>
+    <button mat-raised-button color="primary" (click)="createMyEntity()">
+      <mat-icon>add</mat-icon>
+      Create Entity
+    </button>
+    <br>
+    <br>
+    <button mat-raised-button color="primary" (click)="reloadMyEntities()">
+      <mat-icon>refresh</mat-icon>
+      Reload list
+    </button>
+    <br>
+    <pre>{{ myData | json }}</pre>
   </div>
 </div>

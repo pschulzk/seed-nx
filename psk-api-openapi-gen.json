@@ -1,0 +1,6 @@
+{
+  "$schema": "node_modules/ng-openapi-gen/ng-openapi-gen-schema.json",
+  "input": "./dist/apps/psk-api/api-swagger-spec.json",
+  "output": "./libs/psk-lib/src/lib",
+  "ignoreUnusedModels": false
+}

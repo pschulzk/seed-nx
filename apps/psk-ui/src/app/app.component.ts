@@ -1,35 +1,38 @@
-import { CommonModule } from '@angular/common'
-import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { MatButtonModule } from '@angular/material/button'
-import { MatIconModule } from '@angular/material/icon'
-import { MatToolbarModule } from '@angular/material/toolbar'
-import { UntilDestroy } from '@ngneat/until-destroy'
-import { MyData } from '@psk/psk-lib'
-
-export interface VisualizationState {
-  frameNumber: number
-  objects: VisualObjectData[]
-}
-
-export interface VisualObjectData {
-  id: string
-  x: number
-  y: number
-  color: string
-  label?: string
-}
+import { Component } from '@angular/core'
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy'
+import { MyEntityService } from '@psk/psk-lib'
+import { BehaviorSubject, switchMap } from 'rxjs'
 
 @UntilDestroy()
 @Component({
-  standalone: true,
-  imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule],
   selector: 'psk-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  myData: MyData = {
-    test: true,
+  myData = {}
+  private _reload$ = new BehaviorSubject<void>(undefined)
+
+  constructor(
+    private myentities: MyEntityService,
+  ) {}
+
+  ngOnInit(): void {
+    this._reload$.pipe(
+      untilDestroyed(this),
+      switchMap(() => this.myentities.myEntityControllerFindMany({ crudQuery: '{}' }))
+    ).subscribe((data) => {
+      this.myData = JSON.parse(data as unknown as string)
+    })
+  }
+
+  createMyEntity(): void {
+    this.myentities.myEntityControllerCreate({ crudQuery: '{}', body: { name: 'test' } }).pipe(untilDestroyed(this)).subscribe((data) => {
+      this.reloadMyEntities()
+    })
+  }
+
+  reloadMyEntities(): void {
+    this._reload$.next()
   }
 }
