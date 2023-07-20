@@ -58,7 +58,7 @@ npx nx g @nx/angular:application
 ## How to add new backend app
 Add new NestJS app:
 ```
-npx nx g @nx/nest:application
+npx nx g @nx/node:application
 ```
 
 ### Define new Entity
