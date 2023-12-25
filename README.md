@@ -30,6 +30,10 @@ Boot Docker container containing sample database for sample backend app:
 ```
 docker-compose up -d
 ```
+Configure env vars for backend app by creating [apps/psk-api/.env](apps/psk-api/.env) with e. g.:
+```
+DATABASE_URL="postgresql://psk_user:mYsEcReTpAsSwOrD@localhost:5432/psk?schema=public"
+```
 
 Run backend app:
 
