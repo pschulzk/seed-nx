@@ -4,6 +4,8 @@
 
 A monorepository template based on [Nrwl/Nx](https://nx.dev/) set up for [Angular](https://angular.io/) with [Angular Material](https://material.angular.io/), [NestJS](https://nestjs.com/) and [Prisma](https://www.prisma.io/) using [PostgreSQL](https://www.postgresql.org/).
 
+Inspired by this article: [Building a REST API with NestJS and Prisma](https://www.prisma.io/blog/nestjs-prisma-rest-api-7D056s1BmOL0)
+
 ## Prerequisites
 
 - [NodeJS](https://nodejs.org/en/blog/release/v18.12.0) >= 18.12.0 < 19
@@ -30,7 +32,9 @@ Boot Docker container containing sample database for sample backend app:
 ```
 docker-compose up -d
 ```
+
 Configure env vars for backend app by creating [apps/psk-api/.env](apps/psk-api/.env) with e. g.:
+
 ```
 DATABASE_URL="postgresql://psk_user:mYsEcReTpAsSwOrD@localhost:5432/psk?schema=public"
 ```
