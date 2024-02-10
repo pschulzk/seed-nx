@@ -7,6 +7,7 @@ import { AppService } from './app.service'
 import { MyEntityModule } from './modules/my-entity/my-entity.module'
 import { PrismaService } from './modules/prisma/prisma.service'
 import { PrismaCrudModule } from 'nestjs-prisma-crud'
+import { AssistantModule } from './modules/assistant/assistant.module'
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { PrismaCrudModule } from 'nestjs-prisma-crud'
     PrismaCrudModule.register({
       prismaService: PrismaService,
     }),
+    AssistantModule,
     MyEntityModule,
   ],
   controllers: [AppController],

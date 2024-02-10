@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "resolveJsonModule": true,
     "paths": {
-      "@psk/psk-lib": ["libs/psk-lib/src/index.ts"]
+      "@psk/psk-lib": ["libs/psk-lib/src/index.ts"],
+      "@psk/shared/data-access/openai-tools": ["libs/shared/data-access/openai-tools/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
