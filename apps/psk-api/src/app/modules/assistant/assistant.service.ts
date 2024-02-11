@@ -63,10 +63,10 @@ export class AssistantService {
    * If the run is not complete after the limit, return an error message.
    * @returns the run object if status is completed
    */
-  async queryRunStatus(openAiService: OpenAI, threadId: string, runId: string, maxRetries = 10) {
+  async queryRunStatus(openAiService: OpenAI, threadId: string, runId: string, maxRetries = 30) {
     let count = 0
     let runStatus: OpenAI.Beta.Threads.Runs.Run
-    while (count < maxRetries) {
+    while (count <= maxRetries) {
       runStatus = await this.getRunStatus(openAiService, threadId, runId)
       if (runStatus.status === 'completed') {
         return runStatus
@@ -74,7 +74,10 @@ export class AssistantService {
       count++
       await new Promise(resolve => setTimeout(resolve, 1000))
     }
-    Logger.error(`Run status: ${runStatus.status} after ${maxRetries} checks.`)
+    // cancel the request
+    Logger.error(`Run status: ${runStatus.status} after ${maxRetries} checks. Cancelling request.`)
+    await openAiService.beta.threads.runs.cancel(threadId, runId)
+    Logger.log(`Run with ID "${runId}" in thread with ID "${threadId}" has been cancelled.`)
   }
 
 }
