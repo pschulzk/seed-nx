@@ -6,12 +6,33 @@ generator client {
   binaryTargets = ["native", "linux-arm64-openssl-1.1.x", "linux-musl", "debian-openssl-1.1.x", "linux-musl-openssl-3.0.x"]
 }
 
+generator nestjsDto {
+  provider                        = "prisma-generator-nestjs-dto"
+  output                          = "../src/generated"
+  outputToNestJsResourceStructure = "true"
+  flatResourceStructure           = "false"
+  exportRelationModifierClasses   = "true"
+  reExport                        = "false"
+  createDtoPrefix                 = "Create"
+  updateDtoPrefix                 = "Update"
+  dtoSuffix                       = "Dto"
+  entityPrefix                    = ""
+  entitySuffix                    = ""
+  classValidation                 = "true"
+  fileNamingStyle                 = "kebab"
+  noDependencies                  = "false"
+  outputType                      = "class"
+  definiteAssignmentAssertion     = "false"
+  requiredResponseApiProperty     = "true"
+  prettier                        = "true"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model MyEntity {
-  id       String  @id @default(uuid())
-  name     String
+  id   String @id @default(uuid())
+  name String
 }
