@@ -102,13 +102,17 @@ npx dotenv -e apps/{YOUR_APP_NAME}/.env -- npx prisma migrate dev --schema apps/
 
 Because of the Nx folder structure [dotenv-cli](https://github.com/entropitor/dotenv-cli#dotenv-cli) is required to pass environment variable from [apps/psk-api/.env](apps/psk-api/.env) to Prisma CLI.
 
+This will also run `@brakebein/prisma-generator-nestjs-dto` in order to generate all DTOs from the prism schema in `apps/psk-api/generated`.
+
 Use [nestjs-prisma-crud](https://kepelrs.github.io/nestjs-prisma-crud/) to generate new CRUD templates for entities:
 
 ```
-npx nx g -c nestjs-prisma-crud-schematics crud-resource
+npx nx g -c nestjs-prisma-crud-schematics crud-resource MyEntity
 ```
 
-Generate interfaces, modules and services to corresponding library for Angular apps to consume:
+Then, import the generated DTOs in `apps/psk-api/generated` to the generated NestJS CRUD services.
+
+Generate modules and services to corresponding library for Angular apps to consume:
 
 ```
 npm run generate-api-lib

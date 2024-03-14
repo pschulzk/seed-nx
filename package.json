@@ -31,9 +31,10 @@
   "scripts": {
     "ng": "nx",
     "nx": "nx",
-    "generate-api-lib": "npx ng-openapi-gen -c psk-api-openapi-gen.json && npx create-ts-index libs/psk-lib/src/lib",
-    "serve-api": "npx dotenv -e apps/psk-api/.env -- npx prisma migrate reset --schema apps/psk-api/prisma/schema.prisma && nx serve --configuration development --project psk-api",
-    "serve-ui": "npm run generate-api-lib && nx serve --configuration development --proxy-config proxy.config.json --project psk-ui",
+    "gen-db": "npx dotenv -e apps/psk-api/.env -- npx prisma migrate reset --schema apps/psk-api/prisma/schema.prisma",
+    "gen-frontend-lib": "npx ng-openapi-gen -c psk-api-openapi-gen.json && npx create-ts-index libs/psk-lib/src/lib",
+    "serve-api": "npx gen-db && nx serve --configuration development --project psk-api",
+    "serve-ui": "npm run gen-frontend-lib && nx serve --configuration development --proxy-config proxy.config.json --project psk-ui",
     "build": "nx build --prod --project",
     "test": "nx test --watch=false --project",
     "test:watch": "nx test --watch=true --project"
@@ -81,6 +82,7 @@
     "@angular/cli": "~16.1.0",
     "@angular/compiler-cli": "~16.1.0",
     "@angular/language-service": "~16.1.0",
+    "@brakebein/prisma-generator-nestjs-dto": "^1.20.0",
     "@nestjs/schematics": "^10.0.1",
     "@nestjs/testing": "^10.0.2",
     "@nx/cypress": "16.4.0",
